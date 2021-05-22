@@ -10,20 +10,13 @@ body {
   letter-spacing: 0.03em;
 
   background-image: url('../images/world-map.svg');
-
-  //   background-size: cover;
   background-size: 1200px;
   background-repeat: no-repeat;
-  //   width: 1200px;
-  // margin-right: auto;
-  // margin-left: auto;
-  //   padding-left: 55px;
-  //   padding-right: 55px;
   background-position: 50% 160px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: center;
 
   background-color: lightgray;
 }
@@ -39,8 +32,6 @@ a {
 
 img {
   display: inline-block;
-  // max-width: 100%;
-  // height: auto;
 }
 
 h1,

@@ -6,7 +6,6 @@ import fetchCountries from './js/fetch-countries';
 import countriesListMarkup from './templates/countries';
 import countryDataMarkup from './templates/country';
 
-// const debounce = require('lodash.debounce');
 import debounce from 'lodash.debounce';
 
 const INPUT_DELAY = 1000;
@@ -16,13 +15,17 @@ const countriesContainerEl = document.querySelector('.countries-container');
 
 countryToSearchEl.addEventListener('input', debounce(onCountryNameInput, INPUT_DELAY));
 
-// console.log(countriesContainerEl);
-     
 function onCountryNameInput() {
+
+  if (countryToSearchEl.value === '') {
+    resetMarkup();
+    return;
+  };
+
   fetchCountries(countryToSearchEl.value)
     .then(countriesData => {
 
-      console.log('Received data: ', countriesData);
+      // console.log('Received data: ', countriesData);
 
       if (countriesData.length > 10) {
         throw new Error("Too many matches found. Enter a more specific query")
@@ -35,8 +38,11 @@ function onCountryNameInput() {
     })
     .catch(catchedError => {
       showError(catchedError);
-      // console.error("Error: ", catchedError);
     });
+};
+
+function resetMarkup() {
+  countriesContainerEl.innerHTML = '';
 };
 
 function renderCountryInfoMarkup(countriesData) {
